@@ -26,34 +26,25 @@ The agent simulates multiple interacting brain regions — including cortical me
   
 
 ## Architecture Overview
-┌─────────────────────────────────┐
-│ AGI Agent │
-└─────────────────────────────────┘
-│
-┌───────────────────┼───────────────────┐
-│ │ │
+|
+┈───────────────┼───────────────┈
+| | |
 ▼ ▼ ▼
-┌──────────────────┐ ┌─────────────────┐ ┌──────────────────┐
-│ Cortical │ │ Hippocampal │ │ Prefrontal │
-│ Memory │ │ Index │ │ Controller │
-│ Library │ │ Library │ │ │
-│ (Content) │ │ (Pointers) │ │ (Working Memory) │
-└────────┬─────────┘ └────────┬────────┘ └────────┬─────────┘
-│ │ │
-│ ┌────────▼────────┐ │
-│ │ Value │◄──────────┘
-│ │ Discriminator │
-│ │ (NE/DA/ACh/ │
-│ │ Cortisol) │
-│ └────────┬────────┘
-│ │
+Cortical Hippocampal Prefrontal
+Memory Index Controller
+Library Library (Working Memory)
+(Content) (Pointers) |
+| | |
+| | |
+| Value ←─────────────┘
+| Discriminator
+| (NE/DA/ACh/Cortisol)
+| |
 ▼ ▼
-┌──────────────────────────────────────────┐
-│ Dream Engine (Sleep) │
-│ Multi-level clustering │
-│ Cross-level sampling │
-│ Temporal biased integration │
-└──────────────────────────────────────────┘
+┈─────────────────────────────────────┈
+Dream Engine
+(Sleep Consolidation)
+┈─────────────────────────────────────┈
 
 ### Component Roles
 
