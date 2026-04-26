@@ -1,7 +1,10 @@
 # AGI Demo: Brain-Inspired Architecture with Hippocampal-Prefrontal Loop
 https://img.shields.io/badge/python-3.8+-blue.svg
+
 https://img.shields.io/badge/PyTorch-1.9+-red.svg
+
 https://img.shields.io/badge/License-MIT-yellow.svg
+
 https://img.shields.io/badge/Environment-Crafter-green.svg
 
 This repository contains a brain-inspired AGI (Artificial General Intelligence) prototype that implements the theoretical framework proposed in:
@@ -138,53 +141,65 @@ histories, agents, chain_counts = run_experiment(config)
 ```
 
 ## Code Structure
-agi_demo.py (or AGI_brain_inspired_demo.ipynb)
-agi_demo.py
-│
-├── pretrain_decoder() # Independent decoder training
-├── Config # Global configuration dataclass
-├── MultiLevelFeatures # Multi-level feature dataclass
-├── IndexChain / MotivationSignal # Supporting dataclasses
-├── CandidateChain # Retrieved candidate dataclass
-│
-├── CorticalMemoryLibrary # Content Library (Neocortex)
-│ ├── Multi-level CNN feature extraction (L0-L3)
-│ ├── Multimodal encoding (inventory, position, health, etc.)
-│ └── Memory trace creation and management
-│
-├── HippocampalIndexLibrary # Index Library (Hippocampus CA3)
-│ ├── Causal chain storage as pointer sequences
-│ ├── Graph-based retrieval with similarity edges
-│ └── Abstract node compression and temporary chain decay
-│
-├── PrefrontalController # Controller (Prefrontal Cortex)
-│ ├── Working memory management
-│ ├── Index library query and action selection
-│ └── Spatial goal-directed navigation
-│
-├── ValueDiscriminator # Neuromodulation System
-│ ├── Multi-channel modulation (NE, DA, ACh, Cortisol)
-│ ├── Physiological model (hunger, thirst, health, safety)
-│ └── Motivation generation and strategy selection
-│
-├── PretrainedDiffusionDreamer # Dream Engine (Sleep)
-│ ├── Same-level clustering (L0-L3)
-│ ├── Cross-level random sampling
-│ ├── Temporal biased integration
-│ └── Multimodal clustering
-│
-├── AGIAgent # Complete agent orchestrator
-│ ├── Day/night detection and sleep cycle management
-│ └── Dopamine-gated causal chaining (temporary → permanent)
-│
-├── RandomAgent / PPOAgent # Baseline agents for comparison
-│
-├── Dashboard # Real-time visualization
-│ ├── Index graph, neuromodulation bars
-│ ├── Dream fragment images
-│ └── Causal chain panel, reward history
-│
-└── run_experiment() # Experiment runner with multi-agent comparison
+
+**Data Classes**
+- `Config` — Global configuration dataclass
+- `MultiLevelFeatures` — Multi-level feature dataclass
+- `IndexChain` / `MotivationSignal` / `CandidateChain` — Supporting dataclasses
+
+**Core Components**
+
+- `CorticalMemoryLibrary` — Content Library (Neocortex)
+  - Multi-level CNN feature extraction (L0-L3) via MobileNetV3 hooks
+  - Multimodal encoding: visual, inventory, position, health, hunger, thirst, discount
+  - Memory trace creation with novelty detection and dopamine-gated thresholds
+  - Feature decoder for dream visualization
+
+- `HippocampalIndexLibrary` — Index Library (Hippocampus CA3)
+  - Causal chain storage as pointer sequences
+  - Graph-based retrieval with similarity edges
+  - Abstract node compression and temporary chain decay
+
+- `PrefrontalController` — Controller (Prefrontal Cortex)
+  - Working memory management
+  - Index library query and action selection via neuromodulation strategy
+  - Spatial goal-directed navigation when no causal chain is available
+
+- `ValueDiscriminator` — Neuromodulation System
+  - Multi-channel modulation: NE (exploration), DA (reward), ACh (learning), Cortisol (safety)
+  - Physiological model: hunger, thirst, health, safety with decay and thresholds
+  - Motivation generation and strategy selection (greedy, safety filter, temperature)
+
+- `PretrainedDiffusionDreamer` — Dream Engine (Sleep)
+  - Same-level clustering: L0-L3 independent clustering
+  - Cross-level random sampling: creative association between different feature levels
+  - Temporal biased integration: recent memories weighted over old memories
+  - Multimodal clustering: inventory, position, health, hunger, thirst, discount
+
+**Agent and Baselines**
+
+- `AGIAgent` — Complete agent orchestrator
+  - Day/night detection via image gray ratio analysis
+  - Sleep cycle management with automatic triggering
+  - Dopamine-gated causal chaining (temporary chains → permanent chains)
+
+- `RandomAgent` — Baseline: uniformly random action selection
+
+- `PPOAgent` — Baseline: simplified Proximal Policy Optimization
+
+**Visualization and Experiment**
+
+- `Dashboard` — Real-time visualization dashboard
+  - Environment view with day/night status
+  - Index graph (NetworkX), neuromodulation bar chart
+  - Dream fragment images (original and blended)
+  - Causal chain panel with before/after scene images
+  - Motivation and physiology display, reward history
+
+- `run_experiment()` — Experiment runner with multi-agent comparison
+  - Automatic death detection and life tracking
+  - Periodic statistics logging (every 500 steps)
+  - Final comparison plots: cumulative reward, smoothed reward, achievements, index growth
 
 ## Visualization Dashboard
 
@@ -218,9 +233,9 @@ The agent is evaluated against two baselines in the Crafter environment:
 
 ### Sample Output
 
-============================================================
-AGI Demo V3: Pure CNN Multi-level Integration + Dream Visualization
-============================================================
+
+## AGI Demo V3: Pure CNN Multi-level Integration + Dream Visualization
+
 Step 0: AGI=0.00, Random=0.00, PPO=0.00
 🏆 AGI current achievements: 0/22 (0.0%)
 🎖️ Lifetime best: 0/22
