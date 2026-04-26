@@ -25,26 +25,6 @@ The agent simulates multiple interacting brain regions — including cortical me
 - [License](#license)
   
 
-## Architecture Overview
-|
-┈───────────────┼───────────────┈
-| | |
-▼ ▼ ▼
-Cortical Hippocampal Prefrontal
-Memory Index Controller
-Library Library (Working Memory)
-(Content) (Pointers) |
-| | |
-| | |
-| Value ←─────────────┘
-| Discriminator
-| (NE/DA/ACh/Cortisol)
-| |
-▼ ▼
-┈─────────────────────────────────────┈
-Dream Engine
-(Sleep Consolidation)
-┈─────────────────────────────────────┈
 
 ### Component Roles
 
@@ -159,52 +139,52 @@ histories, agents, chain_counts = run_experiment(config)
 
 ## Code Structure
 agi_demo.py (or AGI_brain_inspired_demo.ipynb)
+agi_demo.py
 │
-├── pretrain_decoder()           # Independent decoder training
-├── Config                       # Global configuration
-├── MultiLevelFeatures           # Multi-level feature dataclass
-├── IndexChain                   # Causal chain dataclass
-├── MotivationSignal             # Motivation signal dataclass
-├── CandidateChain               # Retrieved candidate dataclass
+├── pretrain_decoder() # Independent decoder training
+├── Config # Global configuration dataclass
+├── MultiLevelFeatures # Multi-level feature dataclass
+├── IndexChain / MotivationSignal # Supporting dataclasses
+├── CandidateChain # Retrieved candidate dataclass
 │
-├── CorticalMemoryLibrary        # Cortical memory (Content Library)
-│   ├── Multi-level feature extraction (L0-L3)
-│   ├── Multimodal encoding (inventory, position, health)
-│   ├── Memory trace creation with novelty/dopamine gating
-│   └── Feature decoder for dream visualization
+├── CorticalMemoryLibrary # Content Library (Neocortex)
+│ ├── Multi-level CNN feature extraction (L0-L3)
+│ ├── Multimodal encoding (inventory, position, health, etc.)
+│ └── Memory trace creation and management
 │
-├── HippocampalIndexLibrary      # Hippocampal indexing (Index Library)
-│   ├── Causal chain storage
-│   ├── Graph-based retrieval with similarity edges
-│   ├── Abstract node compression
-│   └── Temporary chain decay
+├── HippocampalIndexLibrary # Index Library (Hippocampus CA3)
+│ ├── Causal chain storage as pointer sequences
+│ ├── Graph-based retrieval with similarity edges
+│ └── Abstract node compression and temporary chain decay
 │
-├── PrefrontalController         # Prefrontal control
-│   ├── Working memory management
-│   ├── Index library query and candidate selection
-│   ├── Spatial goal-directed navigation
-│   └── Action mapping from chain nodes
+├── PrefrontalController # Controller (Prefrontal Cortex)
+│ ├── Working memory management
+│ ├── Index library query and action selection
+│ └── Spatial goal-directed navigation
 │
-├── ValueDiscriminator           # Neuromodulation system
-│   ├── Multi-channel modulation (NE, DA, ACh, Cort)
-│   ├── Physiological model (hunger, thirst, health, safety)
-│   ├── Motivation generation
-│   └── Choice strategy based on neuromodulation state
+├── ValueDiscriminator # Neuromodulation System
+│ ├── Multi-channel modulation (NE, DA, ACh, Cortisol)
+│ ├── Physiological model (hunger, thirst, health, safety)
+│ └── Motivation generation and strategy selection
 │
-├── PretrainedDiffusionDreamer   # Sleep/Dream engine
-│   ├── Same-level clustering (L0-L3)
-│   ├── Cross-level random sampling
-│   ├── Temporal biased integration
-│   └── Multimodal clustering
+├── PretrainedDiffusionDreamer # Dream Engine (Sleep)
+│ ├── Same-level clustering (L0-L3)
+│ ├── Cross-level random sampling
+│ ├── Temporal biased integration
+│ └── Multimodal clustering
 │
-├── AGIAgent                     # Complete agent orchestrator
-│   ├── Day/night detection via image brightness
-│   ├── Sleep cycle management
-│   └── Dopamine-gated causal chaining
+├── AGIAgent # Complete agent orchestrator
+│ ├── Day/night detection and sleep cycle management
+│ └── Dopamine-gated causal chaining (temporary → permanent)
 │
-├── RandomAgent / PPOAgent       # Baseline agents
-├── Dashboard                    # Real-time visualization
-└── run_experiment()             # Experiment runner
+├── RandomAgent / PPOAgent # Baseline agents for comparison
+│
+├── Dashboard # Real-time visualization
+│ ├── Index graph, neuromodulation bars
+│ ├── Dream fragment images
+│ └── Causal chain panel, reward history
+│
+└── run_experiment() # Experiment runner with multi-agent comparison
 
 ## Visualization Dashboard
 
