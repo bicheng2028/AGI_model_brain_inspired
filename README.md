@@ -238,16 +238,23 @@ The agent is evaluated against two baselines in the Crafter environment:
 
 Step 0: AGI=0.00, Random=0.00, PPO=0.00
 🏆 AGI current achievements: 0/22 (0.0%)
+
 🎖️ Lifetime best: 0/22
 
 💤 Sleep cycle 1 (consolidating 5 times)...
+
 🧠 Available memory images: 2
+
 💡 Stored 1 new associations
+
 ✅ Sleep cycle 1 complete
 
 🏆 Achievement unlocked: wake_up!
+
 🏆 Achievement unlocked: collect_sapling!
+
 ⏳ Chain TEMPORARY: trace_0000 → 🎯general → trace_0005
+
 ✅ Chain PERMANENT: trace_0012 → 🎯general → trace_0013
 
 Experimental Results:
